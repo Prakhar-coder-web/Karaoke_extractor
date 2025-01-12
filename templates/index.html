@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Karaoke Extractor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Karaoke Extractor</h1>
+        <form id="karaoke-form">
+            <label for="youtube-url">Enter YouTube URL:</label>
+            <input type="url" id="youtube-url" name="youtube-url" placeholder="https://www.youtube.com/watch?v=example" required>
+            <button type="submit">Extract Karaoke</button>
+        </form>
+        <div id="output" class="output"></div>
+    </div>
+
+    
+</body>
+</html>

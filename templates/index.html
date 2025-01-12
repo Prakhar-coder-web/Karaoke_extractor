@@ -3,20 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Karaoke Extractor</title>
+    <title>Bgm Extractor</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
+
     <div class="container">
-        <h1>Karaoke Extractor</h1>
-        <form id="karaoke-form">
-            <label for="youtube-url">Enter YouTube URL:</label>
-            <input type="url" id="youtube-url" name="youtube-url" placeholder="https://www.youtube.com/watch?v=example" required>
-            <button type="submit">Extract Karaoke</button>
+        <h1>Background music Separator</h1>
+
+        <form action="/process" method="post">
+            <label for="youtube_url">YouTube URL:</label>
+            <input type="text" id="youtube_url" name="youtube_url" required>
+            <button type="submit">Extract Bgm</button>
         </form>
-        <div id="output" class="output"></div>
+
+        {% if vocals_file and karaoke_file %}
+            <h2>Download Separated Files</h2>
+            <div class="download-links">
+                <ul>
+                    <li><a href="{{ url_for('static', filename=vocals_file) }}" id="download-vocals" class="download-btn" download>Download Lyrics-audio</a></li>
+                    <li><a href="{{ url_for('static', filename=karaoke_file) }}" id="download-karaoke" class="download-btn" download>Download BGM</a></li>
+                </ul>
+            </div>
+        {% endif %}
     </div>
 
-    
+    <script>
+        setTimeout(() => {
+            document.getElementById('download-vocals').style.display = 'none';
+            document.getElementById('download-karaoke').style.display = 'none';
+            alert('The download links have expired.');
+        }, 120000); 
+    </script>
+
 </body>
 </html>
